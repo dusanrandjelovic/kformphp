@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Naslov sajta</title>
+</head>
+<body>
+ 
+  <form class="forma" name="forma" method="post" action="kontakt.php">
+ 
+    <label for="ime">Vaše ime</label>
+    <input type="text" id="ime" name="ime" placeholder="Unesite ime" value="">
+ 
+    <label for="prezime">Vaše prezime</label>
+    <input type="text" id="prezime" name="prezime" placeholder="Unesite prezime">
+ 
+    <label for="email">Email adresa</label>
+    <input type="text" id="email" name="email" placeholder="Unesite e-mail adresu">
+ 
+    <input type="button" value="Submit" onclick="proveri()">
+  </form>
+ 
+  <script type="text/javascript">
+   function proveri()  {
+    let test = /^[a-zA-Z]{2,32}$/g
+    let test2 = /^[a-z]{2,}\.[a-z]{2,}@[a-z]{2,}\.[a-z]{2,6}$/g
+    let ime = document.forma.ime.value;
+    let prezime = document.forma.prezime.value;
+    let email = document.forma.email.value;
+    let rezultat = ime.match(test);
+    console.log(rezultat);
+    let rezultat2 = prezime.match(test);
+    let rezultat3 = email.match(test2);
+    if (rezultat == null)
+    {
+      alert("Ime nije ok!");
+      document.forma.ime.focus();
+    }
+    else if(rezultat2 == null)
+    {
+    alert("Prezime nije ok!");
+      document.forma.prezime.focus();
+    }
+    else if(rezultat3 == null)
+    {
+    alert("Email nije ok!");
+    document.forma.email.focus();
+  }
+  else document.forma.submit();
+}
+</script>  <!-- zadatak: napisati odgovor o uspesno poslatoj poruci, nakon cega resetovati i dodati potrebna polja -->
+ 
+</body>
+</html>
